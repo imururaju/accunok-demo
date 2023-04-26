@@ -7,16 +7,16 @@ RUN apt-get update && apt-get install -y \
     netcat
 
 # Copy the script into the container
-COPY wisecow.sh /
+COPY wisecow.sh /usr/local/bin/
 
 # Give the script executable permission
-RUN chmod +x /wisecow.sh
+RUN chmod +x /usr/local/bin/wisecow.sh
 
 # Set the working directory to the root directory
-WORKDIR /
+#WORKDIR /
 
 # Expose the service port
 EXPOSE 4499
 
 # Start the script
-CMD ["./wisecow.sh"]
+CMD ["wisecow.sh"]
