@@ -1,5 +1,8 @@
 FROM debian:buster-slim
 
+# Set environment variable for cowsay package path
+ENV COWSAY_PATH=/usr/games/cowsay
+
 RUN apt-get update && apt-get install -y \
     bash \
     fortune \
