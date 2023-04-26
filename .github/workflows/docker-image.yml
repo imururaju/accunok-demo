@@ -28,5 +28,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.DOCKER_USERNAME }}imurusalomanraju/demo:${{ github.sha }}
+          tags: ${{ env.DOCKER_USERNAME }}/demo:${{ github.sha }}
 
