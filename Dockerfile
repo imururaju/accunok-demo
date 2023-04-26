@@ -7,6 +7,9 @@ RUN apt-get update && \
 # Copy the script to the container
 COPY wisecow.sh /
 
+# Give the script executable permission
+RUN chmod +x /wisecow.sh
+
 # Set the working directory to root
 WORKDIR /
 
