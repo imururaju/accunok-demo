@@ -1,7 +1,7 @@
 FROM alpine:latest
 
-# Install necessary packages
-RUN apk add --no-cache bash fortune-mod cowsay netcat-openbsd
+# Update package index and install necessary packages
+RUN apk update && apk add --no-cache bash fortune cowsay netcat-openbsd
 
 # Copy the script into the container
 COPY wisecow.sh /
