@@ -1,7 +1,10 @@
-FROM alpine:latest
+FROM debian:buster-slim
 
-# Update package index and install necessary packages
-RUN apk update && apk add --no-cache bash fortune cowsay netcat-openbsd
+RUN apt-get update && apt-get install -y \
+    bash \
+    fortune \
+    cowsay \
+    netcat
 
 # Copy the script into the container
 COPY wisecow.sh /
