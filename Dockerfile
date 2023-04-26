@@ -1,25 +1,24 @@
-FROM debian:buster-slim
+FROM debian:latest
 
-# Set environment variable for cowsay package path
-ENV COWSAY_PATH=/usr/games/cowsay
+# Install cowsay package
+RUN apt-get update && \
+    apt-get install -y fortune-mod cowsay fortune && \
+    apt-get install -y netcat
 
-RUN apt-get update && apt-get install -y \
-    bash \
-    fortune \
-    cowsay \
-    netcat
+# Set the PATH variable to include the location of cowsay
+ENV PATH="/usr/games:${PATH}"
 
-# Copy the script into the container
-COPY wisecow.sh /usr/local/bin/
+# Copy the script to the container
+COPY wisecow.sh /
 
 # Give the script executable permission
-RUN chmod +x /usr/local/bin/wisecow.sh
+RUN chmod +x /wisecow.sh
 
-# Set the working directory to the root directory
-#WORKDIR /
+# Set the working directory to root
+WORKDIR /
 
 # Expose the service port
 EXPOSE 4499
 
 # Start the script
-CMD ["wisecow.sh"]
+CMD ["./wisecow.sh"]
